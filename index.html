@@ -3,53 +3,55 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
   <title>GroceriesJS</title>
-  <!-- This style sheet is taken from https://www.w3schools.com/howto/howto_js_tabs.asp -->
-  <link href="styles/style.css" rel="stylesheet" type="text/css">
+  <!-- This style sheet is a modified version of https://www.w3schools.com/howto/howto_css_fixed_sidebar.asp -->
+  <link href="styles/styles.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
 </head>
 
 <body>
 
-<!-- Tab links, each one with an onclick event associated with it -->
-<div class="tab">
-  <button class="tablinks" onclick="openInfo(event, 'Client')">Client</button>
-  <button class="tablinks" onclick="openInfo(event, 'Products')">Products</button>
-  <button class="tablinks" onclick="openInfo(event, 'Cart')">Cart</button>
-</div>
+  <div class="navbar">
+    <a onclick="navigate('home')" href="#home">Home</a>
+    <a onclick="navigate('products')" href="#products">Products</a>
+    <a onclick="navigate('cart')" href="#cart">Cart</a>
+  </div>
 
-<!-- Tab content -->
-<div id="Client" class="tabcontent">
-  <h3>Client Information</h3>
-  <p>Tell us a bit about you.</p>
-    Choose Categories:<br>
-    <input type="checkbox" name="category" value="vegetarian" onchange="onChooseCategory(event)">
-    <label for="vegetarian">Vegetarian</label><br>
-    <input type="checkbox" name="category" value="glutenFree" onchange="onChooseCategory(event)">
-    <label for="glutenFree">Gluten Free</label><br>
-    <input type="checkbox" name="category" value="organic" onchange="onChooseCategory(event)">
-    <label for="organic">Organic Only</label><br>
-</div>
+  <div class="main">
+    <div id="home" class="page">
+      <h1>GroceriesJS</h1>
+      <h2>Tell us about your preferences</h2>
+      <h3>We will filter the products to only show those that match your preferences</h3>
+      <input type="checkbox" name="category" value="vegetarian" onchange="onChooseCategory(event.target)">
+      <label for="vegetarian">Vegetarian</label><br>
+      <input type="checkbox" name="category" value="glutenFree" onchange="onChooseCategory(event.target)">
+      <label for="glutenFree">Gluten Free</label><br>
+      <input type="checkbox" name="category" value="organic" onchange="onChooseCategory(event.target)">
+      <label for="organic">Organic Only</label><br>
+    </div>
+    <div id="products" class="page">
+      <h1>Products</h1>
+      <h2>We filtered the products based on your food preferences</h2>
+      <button onclick="onSelectType('all')">All</button>
+      <button onclick="onSelectType('fruit')">Fruits</button>
+      <button onclick="onSelectType('vegetable')">Vegetables</button>
+      <button onclick="onSelectType('meat')">Meat</button>
+      <button onclick="onSelectType('dairy')">Dairy</button>
+      <button onclick="onSelectType('fiber')">Fiber</button>
+      <div id="productList"></div>
+    </div>
+    <div id="cart" class="page">
+      <h1>Cart</h1>
+      <p id="cartList"></p>
+    </div>
+  </div>
 
-<div id="Products" class="tabcontent">
-  <h3>Your targeted products</h3>
-  <p>We preselected products based on your restrictions.</p>
-     Choose items to buy:
-     <div id="displayProduct"></div>
-     <button id="addCart" type="button" class="block" onclick="selectedItems()">
-      Add selected items to cart.
-    </button>
-</div>
-
-<div id="Cart" class="tabcontent">
-  <h3>Cart</h3>
-  <p>Here is your cart.</p>
-  <div id="displayCart"></div>
-</div>
-
-<script src="scripts/groceries.js"></script>
-<script src="scripts/main.js"></script>
+  <script src="data/products.js"></script>
+  <script src="scripts/components.js"></script>
+  <script src="scripts/handlers.js"></script>
+  <script src="scripts/navigation.js"></script>
+  <script src="scripts/utils.js"></script>
+  <script src="scripts/main.js"></script>
 
 </body>
-<footer>
-  <p>Website designed by <i>Amayas Said Amer</i></p>
-</footer>
 </html>
