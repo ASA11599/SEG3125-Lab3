@@ -32,12 +32,15 @@
     <div id="products" class="page">
       <h1>Products</h1>
       <h2>We filtered the products based on your food preferences</h2>
-      <button onclick="onSelectType('all')">All</button>
-      <button onclick="onSelectType('fruit')">Fruits</button>
-      <button onclick="onSelectType('vegetable')">Vegetables</button>
-      <button onclick="onSelectType('meat')">Meat</button>
-      <button onclick="onSelectType('dairy')">Dairy</button>
-      <button onclick="onSelectType('fiber')">Fiber</button>
+      <label for="typeSelect">Food group: </label>
+      <select name="types" id="typeSelect" onchange="onSelectType(event.target)">
+        <option name="type" value="all">All</option>
+        <option name="type" value="fruit">Fruits</option>
+        <option name="type" value="vegetable">Vegetables</option>
+        <option name="type" value="meat">Meat</option>
+        <option name="type" value="dairy">Dairy</option>
+        <option name="type" value="fiber">Fiber</option>
+      </select>
       <div id="productList"></div>
     </div>
     <div id="cart" class="page">

@@ -23,7 +23,8 @@ function removeFromCart(id) {
     });
 }
 
-function onSelectType(type) {
+function onSelectType(target) {
+    type = target["value"];
     const filtered = filterProducts();
     let currentProducts;
     if (type === "all") {
